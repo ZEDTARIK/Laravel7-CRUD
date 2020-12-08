@@ -36,7 +36,7 @@
                 <td>{{ $post->id }}</td>
                 <td>{{ $post->title }}</td>
                 <td>
-                <a href="{{ url('/posts/'.$post->id.'/edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                  <a href="{{ url('/posts/'.$post->id.'/edit') }}" class="btn btn-sm btn-warning" @if($tab == 'archive') disabled @endif>Edit</a>
                 </td>
                 <td>
                   @if( !$post->deleted_at )
