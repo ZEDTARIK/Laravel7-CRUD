@@ -10,6 +10,16 @@
 <body>
 
     <div class="container">
+        
+        <div class="row mt-2">
+            <div class="col-md-10 mx-auto">
+                @if ( session()->has('status'))
+                    <div class="alert alert-dismissible alert-success">
+                    <strong> {{ session()->get('status') }} </strong>
+                    </div>
+                @endif
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-10 mx-auto">

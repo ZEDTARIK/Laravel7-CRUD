@@ -48,6 +48,7 @@ class PostController extends Controller
         $post->body = $request->input('body');
         
         $post->save();
+        $request->session()->flash('status', 'Post Created SuccessFully !');
         return redirect()->route('posts.index');
     }
 
@@ -88,6 +89,7 @@ class PostController extends Controller
         $post->body = $request->input('body');
         
         $post->save();
+        $request->session()->flash('status', 'Post Updated SuccessFully !');
         return redirect()->route('posts.index');
     }
 
