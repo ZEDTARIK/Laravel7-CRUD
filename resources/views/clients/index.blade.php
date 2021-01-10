@@ -1,6 +1,14 @@
 @extends('layout');
 @section('content')
 
+<div class="row my-3">
+    <div class="col-md-6">
+    <a href="{{ route('client.create')}}" class="btn btn-info">
+    Add New Client
+    </a>
+    </div>
+  </div>
+
     <div class="card border-primary my-3">
       <div class="card-body">
         <h4 class="card-title">Clients</h4>
