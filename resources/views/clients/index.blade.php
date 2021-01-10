@@ -11,7 +11,8 @@
                     <th>#</th>
                     <th>Full Name</th>
                     <th>Email</th>
-                    <th>Action</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,15 @@
                             <a href="{{'/client/'.$client->id.'/edit'}} " class="btn btn-sm btn-warning">
                                 <i class="fa fa-edit"></i> Edit
                             </a>
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ route('client.destroy', ['client' => $client->id]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash-o"></i> 
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

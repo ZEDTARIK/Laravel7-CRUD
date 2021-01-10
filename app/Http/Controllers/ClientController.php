@@ -58,7 +58,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = Client::find($id);
+        $client = Client::findOrFail($id);
         return view('clients.edit', ['client' => $client]);
     }
 
@@ -71,7 +71,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $client = Client::find($id);
+        $client = Client::findOrFail($id);
         $client->fullName =  $request->input('fullName');
         $client->email = $request->input('email');
         $client->save();
@@ -85,8 +85,11 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->destroy($id);
+        $request->session()->flash('status', 'Client SuccessFully Deleted !');
+        return redirect()->route('client.index');
     }
 }
