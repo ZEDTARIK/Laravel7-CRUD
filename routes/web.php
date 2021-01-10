@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+// Posts
 Route::resource('/posts', 'PostController')->except(['show']);
 Route::get('/posts/archive', 'PostController@archive');
 Route::patch('/posts/{id}/restore', 'PostController@restore');
+ // Clients
+Route::resource('/client', 'ClientController');

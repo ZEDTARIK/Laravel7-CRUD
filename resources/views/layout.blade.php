@@ -10,7 +10,14 @@
 <body>
 
     <div class="container">
-        
+        <div class="row mt-2">
+            <nav class="navbar navbar-expand navbar-light bg-light">
+                <div class="nav navbar-nav">
+                    <a class="nav-item nav-link active" href="{{ route('posts.index')}}"> Post </a>
+                    <a class="nav-item nav-link" href="{{ route('client.index')}}"> Client </a>
+                </div>
+            </nav>
+        </div>
         <div class="row mt-2">
             <div class="col-md-10 mx-auto">
                 @if ( session()->has('status'))
