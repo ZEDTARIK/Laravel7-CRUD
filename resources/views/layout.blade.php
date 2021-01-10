@@ -16,6 +16,7 @@
                 <div class="nav navbar-nav">
                     <a class="nav-item nav-link active" href="{{ route('posts.index')}}"> Post </a>
                     <a class="nav-item nav-link" href="{{ route('client.index')}}"> Client </a>
+                    <a class="nav-item nav-link" href="{{ route('customer.index')}}"> Customer </a>
                 </div>
             </nav>
         </div>

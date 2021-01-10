@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
 
 class CustomerController extends Controller
 {
@@ -13,7 +14,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::cursor();
+        return view('customers.index', ['customers' => $customers]);
     }
 
     /**
@@ -23,7 +25,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create');
     }
 
     /**
@@ -34,7 +36,12 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = new Customer();
+        $customer->fullName = $request->input('fullName');
+        $customer->email = $request->input('email');
+        $customer->save();
+        $request->session()->flash('status', 'Customer SuccessFully Inserted !');
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -56,7 +63,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        return view('customers.edit', ['customer' => $customer]);
     }
 
     /**
@@ -68,7 +76,12 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::find($id);
+        $customer->fullName = $request->input('fullName');
+        $customer->email = $request->input('email');
+        $customer->save();
+        $request->session()->flash('status', 'Customer SuccessFully Updated !');
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -77,8 +90,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $customer->destroy($id);
+        $request->session()->flash('status', 'Customer SuccessFully Deleted !');
+        return redirect()->route('customer.index');
     }
 }
