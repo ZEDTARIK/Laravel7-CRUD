@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Client;
 
 class ClientController extends Controller
 {
@@ -13,7 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('clients.index');
+        $clients = Client::cursor();
+        return view('clients.index', ['clients' => $clients]);
     }
 
     /**
