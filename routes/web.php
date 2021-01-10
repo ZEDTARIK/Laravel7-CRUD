@@ -22,3 +22,5 @@ Route::get('/posts/archive', 'PostController@archive');
 Route::patch('/posts/{id}/restore', 'PostController@restore');
  // Clients
 Route::resource('/client', 'ClientController');
+// Customer
+Route::resource('/customer', 'CustomerController');
